@@ -1,23 +1,22 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 
-import {
-  Feed,
-  SearchFeed,
-  VideoPlay,
-  ChannelDetails,
-} from './components/pages';
+import { Feed, SearchFeed, VideoPlay, ChannelDetail } from './components/pages';
+
+import { Box } from '@mui/material';
 
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Feed />} />
-        <Route path="/video/:id" element={<VideoPlay />} />
-        <Route path="/channel/:id" element={<ChannelDetails />} />
-        <Route path="/search/:searchTerm" element={<SearchFeed />} />
-      </Routes>
+      <Box sx={{ background: '#000' }}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Feed />} />
+          <Route path="/search/:searchTerm" element={<SearchFeed />} />
+          <Route path="/video/:id" element={<VideoPlay />} />
+          <Route path="/channel/:id" element={<ChannelDetail />} />
+        </Routes>
+      </Box>
     </BrowserRouter>
   );
 }

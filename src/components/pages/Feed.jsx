@@ -2,7 +2,19 @@ import { Box, Stack, Typography, ListItem } from '@mui/material';
 import Sidebar from '../Sidebar';
 import Videos from '../Videos';
 
+// getting data
+import { useDispatch, useSelector } from 'react-redux';
+import { getDataFromAPI } from '../../features/category/categorySlice';
+import { useEffect } from 'react';
+
 const Feed = () => {
+  const { selectedCategory } = useSelector((store) => store.category);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getDataFromAPI(`search?part=snippet&q=${selectedCategory}`));
+  }, []);
+
   return (
     <main className="feed section-center">
       <Stack

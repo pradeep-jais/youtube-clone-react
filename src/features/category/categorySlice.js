@@ -8,9 +8,15 @@ const initialState = {
 const categorySlice = createSlice({
   name: 'video category',
   initialState,
-  reducers: {},
+  reducers: {
+    setCategory: (state, action) => {
+      state.selectedCategory = action.payload;
+    },
+  },
 });
 
 // console.log(categorySlice);
+
+export const { setCategory } = categorySlice.actions;
 
 export default categorySlice.reducer;

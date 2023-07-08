@@ -1,10 +1,13 @@
 import { Stack, Typography } from '@mui/material';
 import { categories } from '../../utils/constants';
 
+// category feature state management
 import { useSelector, useDispatch } from 'react-redux';
+import { setCategory } from '../../features/category/categorySlice';
 
 const Sidebar = () => {
   const { selectedCategory } = useSelector((store) => store.category);
+  const dispatch = useDispatch();
 
   return (
     <Stack
@@ -26,14 +29,12 @@ const Sidebar = () => {
               color: '#fff',
               background: category.name === selectedCategory && '#f31503',
             }}
+            onClick={() => dispatch(setCategory(category.name))}
           >
             <span
               className="icon-btn"
               style={{
-                color:
-                  category.name === selectedCategory
-                    ? '#fff !important'
-                    : '#f31503',
+                color: category.name === selectedCategory ? '#fff' : '#f31503',
                 marginRight: '0.8rem',
               }}
             >

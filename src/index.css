@@ -55,7 +55,6 @@ a {
   background: transparent;
   outline: none;
   border: none;
-
   padding: 7px 15px;
   margin: 10px 0px;
   border-radius: 20px;
@@ -67,10 +66,14 @@ a {
     margin: 10px;
   }
 }
-
-@media screen and (max-width: 800px) {
+.copyright {
+  display: none !important;
+  text-align: center;
+  text-transform: capitalize;
+}
+@media screen and (min-width: 900px) {
   .copyright {
-    display: none !important;
+    display: block !important;
   }
 }
 

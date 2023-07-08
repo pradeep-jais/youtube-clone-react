@@ -1,9 +1,11 @@
 import { Stack, Typography } from '@mui/material';
 import { categories } from '../../utils/constants';
 
-let selectedCategory = 'New';
+import { useSelector, useDispatch } from 'react-redux';
 
 const Sidebar = () => {
+  const { selectedCategory } = useSelector((store) => store.category);
+
   return (
     <Stack
       variant="text"
@@ -11,6 +13,8 @@ const Sidebar = () => {
         overflow: 'auto',
         height: { xs: 'auto', sm: '90%' },
         flexDirection: { xs: 'row', md: 'column' },
+        borderRight: { xs: 'none', md: '1px solid #3d3d3d' },
+        paddingRight: 2,
       }}
     >
       {categories.map((category) => {

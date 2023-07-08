@@ -89,3 +89,16 @@ a {
     width: 200px;
   }
 }
+
+/* Global  */
+.section-center {
+  width: 100%;
+  max-width: 1276px;
+  margin: 0 auto;
+}
+/* Navbar  */
+.navbar {
+  width: 100%;
+  max-width: 1276px;
+  margin: 0 auto;
+}

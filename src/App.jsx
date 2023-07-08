@@ -8,7 +8,7 @@ import { Box } from '@mui/material';
 function App() {
   return (
     <BrowserRouter>
-      <Box sx={{ background: '#000' }}>
+      <Box sx={{ background: '#000', width: '100%' }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Feed />} />

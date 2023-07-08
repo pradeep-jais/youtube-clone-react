@@ -8,7 +8,7 @@ import SearchBar from './SearchBar.jsx';
 
 const Navbar = () => {
   return (
-    <>
+    <nav className="navbar">
       <Stack
         direction="row"
         alignItems="center"
@@ -41,7 +41,7 @@ const Navbar = () => {
         </Link>
         <SearchBar />
       </Stack>
-    </>
+    </nav>
   );
 };
 export default Navbar;

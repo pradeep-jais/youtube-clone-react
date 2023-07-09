@@ -17,7 +17,7 @@ export const getDataFromAPI = createAsyncThunk(
     // console.log(url);
     try {
       const data = await fetFromAPI(url);
-      console.log(data);
+      // console.log(data);
       return data;
     } catch (error) {
       console.log(error);
@@ -39,9 +39,10 @@ const categorySlice = createSlice({
         console.log('pending');
       })
       .addCase(getDataFromAPI.fulfilled, (state, action) => {
-        console.log('fulfiled');
+        // console.log('fulfiled');
+        // console.log(action);
         state.isLoading = false;
-        state.videoData = action.payload;
+        state.videoData = action.payload.items;
       })
       .addCase(getDataFromAPI.rejected, (state, action) => {
         console.log('rejected');

@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, ListItem } from '@mui/material';
 import Sidebar from '../Sidebar';
-import Videos from '../Videos';
+import VideosContainer from '../VideosContainer';
 
 // getting data
 import { useDispatch, useSelector } from 'react-redux';
@@ -8,7 +8,9 @@ import { getDataFromAPI } from '../../features/category/categorySlice';
 import { useEffect } from 'react';
 
 const Feed = () => {
-  const { selectedCategory } = useSelector((store) => store.category);
+  const { selectedCategory, videoData } = useSelector(
+    (store) => store.category
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -52,7 +54,7 @@ const Feed = () => {
               videos
             </span>
           </Typography>
-          <Videos />
+          <VideosContainer videos={videoData} />
         </Box>
       </Stack>
     </main>

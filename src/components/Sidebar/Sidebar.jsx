@@ -33,7 +33,7 @@ const Sidebar = () => {
             onClick={() => {
               dispatch(setCategory(category.name));
               dispatch(
-                getDataFromAPI(`search?part=snippet&q=${selectedCategory}`)
+                getDataFromAPI(`search?part=snippet&q=${category.name}`)
               );
             }}
           >

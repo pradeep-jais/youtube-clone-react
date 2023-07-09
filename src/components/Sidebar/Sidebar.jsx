@@ -4,6 +4,7 @@ import { categories } from '../../utils/constants';
 // category feature state management
 import { useSelector, useDispatch } from 'react-redux';
 import { setCategory } from '../../features/category/categorySlice';
+import { getDataFromAPI } from '../../features/category/categorySlice';
 
 const Sidebar = () => {
   const { selectedCategory } = useSelector((store) => store.category);
@@ -29,7 +30,12 @@ const Sidebar = () => {
               color: '#fff',
               background: category.name === selectedCategory && '#f31503',
             }}
-            onClick={() => dispatch(setCategory(category.name))}
+            onClick={() => {
+              dispatch(setCategory(category.name));
+              dispatch(
+                getDataFromAPI(`search?part=snippet&q=${selectedCategory}`)
+              );
+            }}
           >
             <span
               className="icon-btn"

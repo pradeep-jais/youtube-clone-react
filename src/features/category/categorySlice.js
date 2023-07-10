@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { categories } from '../../utils/constants';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-// import fetFromAPI from '../../utils/fetFromAPI';
 
 import axios from 'axios';
 import { BASE_URL, options } from '../../utils/fetFromAPI';
@@ -25,9 +24,9 @@ export const getDataFromAPI = createAsyncThunk(
       if (response?.data.error) {
         throw new Error('Bad URL parameters');
       }
-      console.log(response);
       return response.data;
     } catch (error) {
+      console.log(error);
       return rejectWithValue(error.message);
     }
   }
@@ -45,23 +44,18 @@ const categorySlice = createSlice({
     builder
       .addCase(getDataFromAPI.pending, (state) => {
         state.isLoading = true;
-        console.log('pending');
       })
       .addCase(getDataFromAPI.fulfilled, (state, action) => {
-        console.log('fulfiled');
-        // console.log(action);
         state.isLoading = false;
         state.videoData = action.payload.items;
       })
       .addCase(getDataFromAPI.rejected, (state, action) => {
-        console.log(action);
+        // console.log(action);
         state.isError = true;
         state.errorMessage = action.payload;
       });
   },
 });
-
-// console.log(categorySlice);
 
 export const { setCategory } = categorySlice.actions;
 

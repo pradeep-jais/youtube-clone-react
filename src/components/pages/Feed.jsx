@@ -14,9 +14,8 @@ const Feed = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDataFromAPI(`search?part=snippetq=${selectedCategory}`));
+    dispatch(getDataFromAPI(`search?part=snippet&q=${selectedCategory}`));
   }, []);
-  console.log('render');
 
   if (isError) {
     return (

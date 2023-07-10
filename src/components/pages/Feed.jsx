@@ -8,15 +8,32 @@ import { getDataFromAPI } from '../../features/category/categorySlice';
 import { useEffect } from 'react';
 
 const Feed = () => {
-  const { selectedCategory, videoData } = useSelector(
+  const { selectedCategory, isError, errorMessage } = useSelector(
     (store) => store.category
   );
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getDataFromAPI(`search?part=snippet&q=${selectedCategory}`));
+    dispatch(getDataFromAPI(`search?part=snippetq=${selectedCategory}`));
   }, []);
+  console.log('render');
 
+  if (isError) {
+    return (
+      <div
+        style={{
+          height: '95vh',
+          color: '#fff',
+          textAlign: 'center',
+          margin: '5rem auto',
+        }}
+      >
+        <h1>Ops</h1>
+        <h4>Something went wrong!</h4>
+        <p>{errorMessage}</p>
+      </div>
+    );
+  }
   return (
     <main className="feed section-center">
       <Stack
@@ -54,7 +71,7 @@ const Feed = () => {
               videos
             </span>
           </Typography>
-          <VideosContainer videos={videoData} />
+          <VideosContainer />
         </Box>
       </Stack>
     </main>

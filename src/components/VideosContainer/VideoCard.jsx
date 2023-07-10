@@ -10,7 +10,8 @@ import {
 import { CheckCircle } from '@mui/icons-material';
 
 const VideoCard = ({ video }) => {
-  console.log(video);
+  // console.log(video);
+
   // destructuring
   const {
     id: { videoId },

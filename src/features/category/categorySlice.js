@@ -1,26 +1,34 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { categories } from '../../utils/constants';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import fetFromAPI from '../../utils/fetFromAPI';
+// import fetFromAPI from '../../utils/fetFromAPI';
+
+import axios from 'axios';
+import { BASE_URL, options } from '../../utils/fetFromAPI';
 
 const initialState = {
   videoData: [],
   selectedCategory: categories[0].name,
   isLoading: true,
   isError: false,
+  errorMessage: '',
 };
 
 // Async thunk
 export const getDataFromAPI = createAsyncThunk(
   'category/getDataFromAPI',
   async (url, thunkAPI) => {
-    // console.log(url);
+    const { rejectWithValue } = thunkAPI;
+    // console.log(thunkAPI);
     try {
-      const data = await fetFromAPI(url);
-      // console.log(data);
-      return data;
+      const response = await axios(`${BASE_URL}/${url}`, options);
+      if (response?.data.error) {
+        throw new Error('Bad URL parameters');
+      }
+      console.log(response);
+      return response.data;
     } catch (error) {
-      console.log(error);
+      return rejectWithValue(error.message);
     }
   }
 );
@@ -36,16 +44,19 @@ const categorySlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(getDataFromAPI.pending, (state) => {
+        state.isLoading = true;
         console.log('pending');
       })
       .addCase(getDataFromAPI.fulfilled, (state, action) => {
-        // console.log('fulfiled');
+        console.log('fulfiled');
         // console.log(action);
         state.isLoading = false;
         state.videoData = action.payload.items;
       })
       .addCase(getDataFromAPI.rejected, (state, action) => {
-        console.log('rejected');
+        console.log(action);
+        state.isError = true;
+        state.errorMessage = action.payload;
       });
   },
 });

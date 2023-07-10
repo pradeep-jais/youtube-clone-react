@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   demoChannelTitle,
   demoChannelUrl,
+  demoThumbnailUrl,
   demoVideoTitle,
   demoVideoUrl,
 } from '../../utils/constants';
@@ -27,12 +28,12 @@ const VideoCard = ({ video }) => {
     >
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
         <CardMedia
-          image={img}
+          image={img || demoThumbnailUrl}
           alt={title}
-          sx={{ width: 358, height: 180 }}
+          sx={{ width: '320px', height: 180 }}
         ></CardMedia>
       </Link>
-      <CardContent sx={{ background: '#1e1e1e', height: '106px' }}>
+      <CardContent sx={{ background: '#1e1e1e', height: '96px' }}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <Typography variant="subtitle1" fontWeight="bold" color="#fff">
             {title.slice(0, 60) || demoVideoTitle.slice(0, 60)}

@@ -6,7 +6,7 @@ const VideosContainer = ({ videos }) => {
   // console.log(videos);
   return (
     <Stack
-      height="90vh"
+      height="auto"
       direction="row"
       flexWrap="wrap"
       justifyContent="start"

@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { demoProfilePicture } from '../../utils/constants';
 import { CheckCircle } from '@mui/icons-material';
 
-const ChannelCard = ({ channelDetail }) => {
+const ChannelCard = ({ channelDetail, marginTop }) => {
+  console.log(channelDetail);
   // Destructuring
   const channelId = channelDetail?.id?.channelId;
   const img =
@@ -19,6 +20,7 @@ const ChannelCard = ({ channelDetail }) => {
         width: { xs: '100%', sm: '320px' },
         height: '100%',
         margin: 'auto',
+        marginTop: marginTop,
       }}
     >
       <Link to={`/channel/${channelId}`}>
@@ -56,7 +58,8 @@ const ChannelCard = ({ channelDetail }) => {
             <Typography>
               {parseInt(
                 channelDetail?.statistics?.subscriberCount
-              ).toLocaleString()}
+              ).toLocaleString()}{' '}
+              subscribers
             </Typography>
           )}
         </CardContent>

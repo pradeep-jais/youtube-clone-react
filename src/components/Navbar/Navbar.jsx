@@ -28,16 +28,10 @@ const Navbar = () => {
             alignItems: 'center',
           }}
         >
-          <YouTubeIcon sx={{ fontSize: '3.25rem', color: 'red' }} />
-          <span
-            style={{
-              fontSize: '2.25rem',
-              color: '#fff',
-              marginLeft: '0.25rem',
-            }}
-          >
-            YouTube
-          </span>
+          <YouTubeIcon
+            sx={{ fontSize: { xs: '3rem', sm: '3.25rem' }, color: 'red' }}
+          />
+          <span className="youtube-icon-text">YouTube</span>
         </Link>
         <SearchBar />
       </Stack>

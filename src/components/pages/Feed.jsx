@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, ListItem } from '@mui/material';
+import { Box, Stack, Typography } from '@mui/material';
 import Sidebar from '../Sidebar';
 import VideosContainer from '../VideosContainer';
 
@@ -6,6 +6,7 @@ import VideosContainer from '../VideosContainer';
 import { useDispatch, useSelector } from 'react-redux';
 import { getDataFromAPI } from '../../features/category/categorySlice';
 import { useEffect } from 'react';
+import Error from './Error';
 
 const Feed = () => {
   const { selectedCategory, isError, errorMessage } = useSelector(
@@ -18,20 +19,7 @@ const Feed = () => {
   }, []);
 
   if (isError) {
-    return (
-      <div
-        style={{
-          height: '95vh',
-          color: '#fff',
-          textAlign: 'center',
-          margin: '5rem auto',
-        }}
-      >
-        <h1>Ops</h1>
-        <h4>Something went wrong!</h4>
-        <p>{errorMessage}</p>
-      </div>
-    );
+    return <Error errorMessage={errorMessage} />;
   }
   return (
     <main className="feed section-center">

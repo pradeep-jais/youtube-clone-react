@@ -3,7 +3,7 @@ import VideoCard from './VideoCard';
 import ChannelCard from './ChannelCard';
 import { useSelector } from 'react-redux';
 
-const VideosContainer = ({ paddingLeft }) => {
+const VideosContainer = ({ padding }) => {
   const { videoData, isLoading } = useSelector((store) => store.category);
 
   if (isLoading) {
@@ -19,9 +19,9 @@ const VideosContainer = ({ paddingLeft }) => {
       height="auto"
       direction="row"
       flexWrap="wrap"
-      justifyContent="start"
+      justifyContent="center"
       gap={2}
-      paddingLeft={paddingLeft}
+      padding={padding}
     >
       {videoData.map((item, index) => {
         return (

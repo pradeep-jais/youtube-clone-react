@@ -6,7 +6,7 @@ import { CheckCircle } from '@mui/icons-material';
 const ChannelCard = ({ channelDetail, marginTop }) => {
   console.log(channelDetail);
   // Destructuring
-  const channelId = channelDetail?.id?.channelId;
+  const channelId = channelDetail?.id?.channelId || channelDetail?.id;
   const img =
     channelDetail?.snippet?.thumbnails?.high?.url || demoProfilePicture;
   const title = channelDetail?.snippet?.title;
@@ -20,49 +20,41 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
         width: { xs: '100%', sm: '320px' },
         height: '100%',
         margin: 'auto',
+        textAlign: 'center',
         marginTop: marginTop,
       }}
     >
       <Link to={`/channel/${channelId}`}>
-        <CardContent
+        <CardMedia
+          image={img}
+          alt={title}
           sx={{
-            display: 'flex',
-            flexDirection: 'column',
-            placeContent: 'center',
-            color: '#fff',
-            textAlign: 'center',
+            borderRadius: '50%',
+            height: '180px',
+            width: '180px',
+            margin: 'auto',
+            mb: 2,
+            border: '1px solid #e3e3e3',
           }}
-        >
-          <CardMedia
-            image={img}
-            alt={title}
+        />
+        <Typography variant="h6" color="#fff">
+          {title}
+          <CheckCircle
             sx={{
-              borderRadius: '50%',
-              height: '180px',
-              width: '180px',
-              mb: 2,
-              border: '1px solid #e3e3e3',
+              fontSize: 14,
+              color: 'powderblue',
+              marginLeft: 0.5,
             }}
           />
-          <Typography variant="h6">
-            {title}
-            <CheckCircle
-              sx={{
-                fontSize: 14,
-                color: 'powderblue',
-                marginLeft: 0.5,
-              }}
-            />
+        </Typography>
+        {channelDetail?.statistics?.subscriberCount && (
+          <Typography>
+            {parseInt(
+              channelDetail?.statistics?.subscriberCount
+            ).toLocaleString()}{' '}
+            subscribers
           </Typography>
-          {channelDetail?.statistics?.subscriberCount && (
-            <Typography>
-              {parseInt(
-                channelDetail?.statistics?.subscriberCount
-              ).toLocaleString()}{' '}
-              subscribers
-            </Typography>
-          )}
-        </CardContent>
+        )}
       </Link>
     </Box>
   );

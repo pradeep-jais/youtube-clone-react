@@ -4,6 +4,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 
 import axios from 'axios';
 import { BASE_URL, options } from '../../utils/fetFromAPI';
+// console.log(BASE_URL, options);
 
 const initialState = {
   videoData: [],

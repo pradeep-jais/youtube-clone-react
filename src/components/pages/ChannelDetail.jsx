@@ -35,7 +35,7 @@ const ChannelDetails = () => {
       <ChannelCard channelDetail={channelData} marginTop="-90px" />
 
       <Box sx={{ width: '100%', margin: '0 auto' }}>
-        <VideosContainer videos={videoData} paddingLeft={4} />
+        <VideosContainer padding={2} />
       </Box>
     </Box>
   );

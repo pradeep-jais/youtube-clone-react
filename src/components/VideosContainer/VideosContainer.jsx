@@ -4,8 +4,8 @@ import ChannelCard from './ChannelCard';
 import { useSelector } from 'react-redux';
 import Error from '../pages/Error';
 
-const VideosContainer = ({ padding }) => {
-  const { videoData, isLoading, isError, errorMessage } = useSelector(
+const VideosContainer = ({ padding, direction }) => {
+  const { videos, isLoading, isError, errorMessage } = useSelector(
     (store) => store.category
   );
 
@@ -22,13 +22,13 @@ const VideosContainer = ({ padding }) => {
   return (
     <Stack
       height="auto"
-      direction="row"
+      direction={direction || 'row'}
       flexWrap="wrap"
       justifyContent="center"
       gap={2}
       padding={padding}
     >
-      {videoData.map((item, index) => {
+      {videos.map((item, index) => {
         return (
           <Box key={index}>
             {item.id.videoId && <VideoCard video={item} />}

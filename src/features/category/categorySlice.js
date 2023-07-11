@@ -7,7 +7,8 @@ import { BASE_URL, options } from '../../utils/fetFromAPI';
 // console.log(BASE_URL, options);
 
 const initialState = {
-  videoData: [],
+  videos: [],
+  videoDetails: {},
   selectedCategory: categories[0].name,
   isLoading: true,
   isError: false,
@@ -46,9 +47,15 @@ const categorySlice = createSlice({
       .addCase(getDataFromAPI.pending, (state) => {
         state.isLoading = true;
       })
-      .addCase(getDataFromAPI.fulfilled, (state, action) => {
+      .addCase(getDataFromAPI.fulfilled, (state, { payload }) => {
+        // console.log(payload);
         state.isLoading = false;
-        state.videoData = action.payload.items;
+        if (payload.kind === 'youtube#searchListResponse') {
+          state.videos = payload.items;
+        }
+        if (payload.kind === 'youtube#videoListResponse') {
+          state.videoDetails = payload.items[0];
+        }
       })
       .addCase(getDataFromAPI.rejected, (state, action) => {
         // console.log(action);

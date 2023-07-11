@@ -46,7 +46,7 @@ const Feed = () => {
             <span> &copy; JSM </span>
           </Typography>
         </Box>
-        <Box p={2} sx={{ overflowY: 'auto', flex: 2 }}>
+        <Box sx={{ overflowY: 'auto', flex: 2, p: { xs: '1rem 0', md: 2 } }}>
           <Typography
             variant="h4"
             fontWeight="bold"

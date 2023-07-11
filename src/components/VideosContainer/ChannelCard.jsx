@@ -4,7 +4,6 @@ import { demoProfilePicture } from '../../utils/constants';
 import { CheckCircle } from '@mui/icons-material';
 
 const ChannelCard = ({ channelDetail, marginTop }) => {
-  console.log(channelDetail);
   // Destructuring
   const channelId = channelDetail?.id?.channelId || channelDetail?.id;
   const img =
@@ -17,7 +16,7 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        width: { xs: '100%', sm: '320px' },
+        width: '240px',
         height: '100%',
         margin: 'auto',
         textAlign: 'center',

@@ -6,9 +6,6 @@ import { BASE_URL, options } from '../../utils/fetFromAPI';
 
 const initialState = {
   channelData: {},
-  isLoading: true,
-  isError: false,
-  errorMessage: '',
 };
 
 // // Async thunk

@@ -2,9 +2,12 @@ import { Stack, Box } from '@mui/material';
 import VideoCard from './VideoCard';
 import ChannelCard from './ChannelCard';
 import { useSelector } from 'react-redux';
+import Error from '../pages/Error';
 
 const VideosContainer = ({ padding }) => {
-  const { videoData, isLoading } = useSelector((store) => store.category);
+  const { videoData, isLoading, isError, errorMessage } = useSelector(
+    (store) => store.category
+  );
 
   if (isLoading) {
     return (
@@ -13,7 +16,9 @@ const VideosContainer = ({ padding }) => {
       </div>
     );
   }
-
+  if (isError) {
+    return <Error errorMessage={errorMessage} />;
+  }
   return (
     <Stack
       height="auto"

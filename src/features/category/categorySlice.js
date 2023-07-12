@@ -7,8 +7,8 @@ import { BASE_URL, options } from '../../utils/fetFromAPI';
 // console.log(BASE_URL, options);
 
 const initialState = {
-  videos: [],
-  videoDetails: {},
+  videos: null,
+  videoDetails: null,
   selectedCategory: categories[0].name,
   isLoading: true,
   isError: false,

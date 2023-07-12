@@ -9,8 +9,9 @@ import { CheckCircle } from '@mui/icons-material';
 import VideosContainer from '../VideosContainer/VideosContainer';
 
 const VideoPlay = () => {
-  const { isLoading, isError, videos, videoDetails, errorMessage } =
-    useSelector((store) => store.category);
+  const { isLoading, isError, videoDetails, errorMessage } = useSelector(
+    (store) => store.category
+  );
   const dispatch = useDispatch();
 
   const { id } = useParams();
@@ -25,6 +26,14 @@ const VideoPlay = () => {
     );
   }, [id]);
 
+  if (!videoDetails) {
+    return (
+      <div style={{ height: '90vh' }}>
+        <div className="loading"></div>
+      </div>
+    );
+  }
+
   if (isLoading) {
     return (
       <div style={{ height: '90vh' }}>
@@ -36,6 +45,7 @@ const VideoPlay = () => {
   if (isError) {
     return <Error errorMessage={errorMessage} />;
   }
+
   const {
     snippet: { title, channelId, channelTitle },
     statistics: { viewCount, likeCount },

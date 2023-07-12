@@ -52,52 +52,44 @@ const VideoPlay = () => {
   } = videoDetails;
 
   return (
-    <Box minHeight="95vh">
+    <main className="video-player section-center">
       <Stack direction={{ xs: 'column', md: 'row' }}>
-        <Box flex={1}>
-          <Box sx={{ width: '100%', position: 'sticky', top: '86px' }}>
-            <ReactPlayer
-              url={`https://www.youtube.com/watch?v=${id}`}
-              className="react-player"
-              controls
-            />
-            <Typography
-              color="var(--clr-white)"
-              variant="h5"
-              fontWeight="bold"
-              p={2}
-            >
-              {title}
-            </Typography>
-            <Stack
-              direction="row"
-              justifyContent="space-between"
-              sx={{ color: 'var(--clr-white)' }}
-              py={1}
-              px={2}
-            >
-              <Link to={`/channel/${channelId}`}>
-                <Typography
-                  variant={{ sm: 'subtitle1', md: 'h6' }}
-                  color={'var(--clr-white)'}
-                >
-                  {channelTitle}
-                  <CheckCircle
-                    sx={{ fontSize: '12px', color: 'var(--clr-grey-5)' }}
-                  />
-                </Typography>
-              </Link>
-              <Stack direction={'row'} gap={'20px'} alignItems={'center'}>
-                <Typography variant="body1" sx={{ opacity: '0.7' }}>
-                  {parseInt(viewCount).toLocaleString()} views
-                </Typography>
-                <Typography variant="body1" sx={{ opacity: '0.7' }}>
-                  {parseInt(likeCount).toLocaleString()} likes
-                </Typography>
-              </Stack>
+        <Box sx={{ width: '100%', position: 'sticky', top: '86px' }}>
+          <ReactPlayer
+            url={`https://www.youtube.com/watch?v=${id}`}
+            className="react-player"
+            controls
+          />
+
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            sx={{ color: 'var(--clr-white)' }}
+            py={1}
+            px={2}
+          >
+            <Link to={`/channel/${channelId}`}>
+              <Typography
+                variant={{ sm: 'subtitle1', md: 'h6' }}
+                color={'var(--clr-white)'}
+              >
+                {channelTitle}
+                <CheckCircle
+                  sx={{ fontSize: '12px', color: 'var(--clr-grey-5)' }}
+                />
+              </Typography>
+            </Link>
+            <Stack direction={'row'} gap={'20px'} alignItems={'center'}>
+              <Typography variant="body1" sx={{ opacity: '0.7' }}>
+                {parseInt(viewCount).toLocaleString()} views
+              </Typography>
+              <Typography variant="body1" sx={{ opacity: '0.7' }}>
+                {parseInt(likeCount).toLocaleString()} likes
+              </Typography>
             </Stack>
-          </Box>
+          </Stack>
         </Box>
+
         <Box
           px={2}
           py={{ md: '1', xs: '5' }}
@@ -107,7 +99,7 @@ const VideoPlay = () => {
           <VideosContainer direction="column" />
         </Box>
       </Stack>
-    </Box>
+    </main>
   );
 };
 export default VideoPlay;

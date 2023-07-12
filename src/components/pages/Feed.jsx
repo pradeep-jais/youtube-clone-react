@@ -32,7 +32,7 @@ const Feed = () => {
         <Box
           sx={{
             height: { xs: 'auto', md: '95vh' },
-            maxWidth: { xs: 'auto', md: '14rem' },
+            width: { xs: 'auto', md: '14rem' },
           }}
         >
           <Sidebar />

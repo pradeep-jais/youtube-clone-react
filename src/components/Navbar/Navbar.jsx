@@ -8,7 +8,7 @@ import SearchBar from './SearchBar.jsx';
 
 const Navbar = () => {
   return (
-    <nav className="navbar">
+    <nav className="navbar section-center">
       <Stack
         direction="row"
         alignItems="center"
@@ -29,7 +29,10 @@ const Navbar = () => {
           }}
         >
           <YouTubeIcon
-            sx={{ fontSize: { xs: '3rem', sm: '3.25rem' }, color: 'red' }}
+            sx={{
+              fontSize: { xs: '2rem', sm: '3rem', md: '3.5rem' },
+              color: 'red',
+            }}
           />
           <span className="youtube-icon-text">YouTube</span>
         </Link>

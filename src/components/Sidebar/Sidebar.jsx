@@ -41,7 +41,7 @@ const Sidebar = () => {
               className="icon-btn"
               style={{
                 color: category.name === selectedCategory ? '#fff' : '#f31503',
-                marginRight: '0.8rem',
+                marginRight: '0.75rem',
               }}
             >
               {category.icon}

@@ -24,20 +24,22 @@ const ChannelDetails = () => {
   }, [id]);
 
   return (
-    <Box>
-      <div
-        style={{
-          background:
-            'radial-gradient(circle, rgba(227,207,52,1) 0%, rgba(56,227,216,1) 54%, rgba(172,55,235,1) 100%)',
-          height: '220px',
-        }}
-      />
-      <ChannelCard channelDetail={channelData} marginTop="-90px" />
+    <main className="channel section-center">
+      <Box>
+        <div
+          style={{
+            background:
+              'radial-gradient(circle, rgba(227,207,52,1) 0%, rgba(56,227,216,1) 54%, rgba(172,55,235,1) 100%)',
+            height: '220px',
+          }}
+        />
+        <ChannelCard channelDetail={channelData} marginTop="-90px" />
 
-      <Box sx={{ width: '100%', margin: '0 auto' }}>
-        <VideosContainer padding={2} />
+        <Box sx={{ width: '100%', margin: '0 auto' }}>
+          <VideosContainer padding={2} />
+        </Box>
       </Box>
-    </Box>
+    </main>
   );
 };
 export default ChannelDetails;

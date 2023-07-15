@@ -33,7 +33,6 @@ const ChannelCard = ({ channelDetail, marginTop }) => {
             width: '180px',
             margin: 'auto',
             mb: 2,
-            border: '1px solid #e3e3e3',
           }}
         />
         <Typography variant="h6" color="#fff">

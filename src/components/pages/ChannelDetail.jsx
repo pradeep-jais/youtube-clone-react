@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 
-import { getDataFromAPI } from '../../features/category/categorySlice';
+import { getDataFromAPI, setPage } from '../../features/category/categorySlice';
 import { getChannelData } from '../../features/channelPage/channelSlice';
 
 import { useEffect } from 'react';
@@ -19,6 +19,9 @@ const ChannelDetails = () => {
   // console.log('video', videoData);
 
   useEffect(() => {
+    // set page indicator to Home
+    dispatch(setPage('Channel'));
+
     dispatch(getChannelData(`channels?part=statistics&id=${id}`));
     dispatch(getDataFromAPI(`search?channelId=${id}&part=snippet&order=date`));
   }, [id]);

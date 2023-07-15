@@ -337,10 +337,47 @@ Channel page
 VideoPlay page
 ###############
  */
+.VideoPlay .navbar {
+  background-color: #000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
 .video-player {
+  position: relative;
+  top: 80px;
+  z-index: 10;
+  min-height: 95vh;
+  max-width: var(--max-width-xl);
+}
+.loading-container {
+  position: relative;
+  top: 80px;
   min-height: 95vh;
 }
 .react-player {
-  /* height: 100% !important;
-  width: 100% !important; */
+  width: 100% !important;
+  height: 232px !important;
+}
+@media screen and (min-width: 600px) {
+  .react-player {
+    height: 421px !important;
+  }
+}
+@media screen and (min-width: 900px) {
+  .react-player {
+    height: 360px !important;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .react-player {
+    height: 390px !important;
+  }
+}
+@media screen and (min-width: 1536px) {
+  .react-player {
+    height: 556px !important;
+  }
 }

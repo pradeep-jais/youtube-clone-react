@@ -10,6 +10,7 @@ const initialState = {
   videos: null,
   videoDetails: null,
   selectedCategory: categories[0].name,
+  page: 'Home',
   isLoading: true,
   isError: false,
   errorMessage: '',
@@ -41,6 +42,9 @@ const categorySlice = createSlice({
     setCategory: (state, action) => {
       state.selectedCategory = action.payload;
     },
+    setPage: (state, action) => {
+      state.page = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -65,6 +69,7 @@ const categorySlice = createSlice({
   },
 });
 
-export const { setCategory } = categorySlice.actions;
+export const { setCategory, setPage } = categorySlice.actions;
+console.log(categorySlice);
 
 export default categorySlice.reducer;

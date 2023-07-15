@@ -9,7 +9,7 @@ import {
 } from '../../utils/constants';
 import { CheckCircle } from '@mui/icons-material';
 
-const VideoCard = ({ video }) => {
+const VideoCard = ({ video, flex }) => {
   // console.log(video);
 
   // destructuring
@@ -19,27 +19,43 @@ const VideoCard = ({ video }) => {
   } = video;
   const { title, channelId, channelTitle } = snippet;
   const img = snippet?.thumbnails?.high?.url;
+
   return (
     <Card
-      sx={{
-        width: { xs: '100%', sm: '240px' },
-        boxShadow: 'none',
-        borderRadius: 0,
-      }}
+      sx={
+        flex
+          ? {
+              boxShadow: 'none',
+              borderRadius: 0,
+              display: { xs: 'block', sm: flex, md: 'block', lg: flex },
+              padding: { sm: '0 1rem', md: '0 1rem 0 0' },
+              width: '100%',
+              background: '#000',
+            }
+          : {
+              boxShadow: 'none',
+              borderRadius: 0,
+              width: { xs: '100vw', sm: '240px' },
+            }
+      }
     >
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
         <CardMedia
           image={img || demoThumbnailUrl}
           alt={title}
           sx={{
-            component: { xs: 'img' },
-            width: { xs: '100%', sm: '240px' },
+            width: { xs: '100vw', sm: '240px' },
             height: { xs: '232px', sm: '135px' },
           }}
-        ></CardMedia>
+        />
       </Link>
+
       <CardContent
-        sx={{ background: '#000', height: '96px', padding: '1rem 0.5rem' }}
+        sx={{
+          background: '#000',
+          width: { sm: '100%', lg: '240px' },
+          maxWidth: '298px',
+        }}
       >
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <Typography

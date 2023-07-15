@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography, useMediaQuery } from '@mui/material';
 import ReactPlayer from 'react-player';
 import { useSelector, useDispatch } from 'react-redux';
 import { Link, useParams } from 'react-router-dom';
@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import Error from './Error';
 import { CheckCircle } from '@mui/icons-material';
 import VideosContainer from '../VideosContainer/VideosContainer';
+import { setPage } from '../../features/category/categorySlice';
 
 const VideoPlay = () => {
   const { isLoading, isError, videoDetails, errorMessage } = useSelector(
@@ -20,23 +21,18 @@ const VideoPlay = () => {
   // console.log(videoDetails);
 
   useEffect(() => {
+    // set video play page
+    dispatch(setPage('VideoPlay'));
+
     dispatch(getDataFromAPI(`videos?part=snippet,statistics&id=${id}`));
     dispatch(
       getDataFromAPI(`search?part=snippet&relatedToVideoId=${id}&type=video`)
     );
   }, [id]);
 
-  if (!videoDetails) {
-    return (
-      <div style={{ height: '90vh' }}>
-        <div className="loading"></div>
-      </div>
-    );
-  }
-
   if (isLoading) {
     return (
-      <div style={{ height: '90vh' }}>
+      <div className="loading-container" style={{ height: '90vh' }}>
         <div className="loading"></div>
       </div>
     );
@@ -45,7 +41,13 @@ const VideoPlay = () => {
   if (isError) {
     return <Error errorMessage={errorMessage} />;
   }
-
+  if (!videoDetails) {
+    return (
+      <div style={{ height: '90vh' }}>
+        <div className="loading"></div>
+      </div>
+    );
+  }
   const {
     snippet: { title, channelId, channelTitle },
     statistics: { viewCount, likeCount },
@@ -54,50 +56,59 @@ const VideoPlay = () => {
   return (
     <main className="video-player section-center">
       <Stack direction={{ xs: 'column', md: 'row' }}>
-        <Box sx={{ width: '100%', position: 'sticky', top: '86px' }}>
+        <Box
+          sx={{
+            background: '#000',
+            width: { xs: '100%', sm: '100%' },
+            padding: { md: '0 2rem 0 2rem', lg: '0 2rem 0 3rem' },
+            height: '100%',
+            // position: 'sticky',
+            // top: '80px',
+          }}
+        >
           <ReactPlayer
             url={`https://www.youtube.com/watch?v=${id}`}
             className="react-player"
             controls
           />
-
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            sx={{ color: 'var(--clr-white)' }}
-            py={1}
-            px={2}
+          <Box
+            sx={{
+              color: 'var(--clr-white)',
+              padding: '1rem',
+            }}
           >
-            <Link to={`/channel/${channelId}`}>
-              <Typography
-                variant={{ sm: 'subtitle1', md: 'h6' }}
-                color={'var(--clr-white)'}
+            <Typography color="var(--clr-white)" variant="h6" fontWeight="bold">
+              {title}
+            </Typography>
+            <Stack
+              direction={{ xs: 'column', sm: 'row' }}
+              justifyContent="space-between"
+              alignItems={{ sm: 'center' }}
+            >
+              <Link to={`/channel/${channelId}`}>
+                <Typography variant="h6" color={'var(--clr-grey-9)'}>
+                  {channelTitle}
+                  <CheckCircle sx={{ fontSize: '16px' }} />
+                </Typography>
+              </Link>
+              <Stack
+                direction={'row'}
+                gap={'20px'}
+                alignItems={'center'}
+                mt={1}
               >
-                {channelTitle}
-                <CheckCircle
-                  sx={{ fontSize: '12px', color: 'var(--clr-grey-5)' }}
-                />
-              </Typography>
-            </Link>
-            <Stack direction={'row'} gap={'20px'} alignItems={'center'}>
-              <Typography variant="body1" sx={{ opacity: '0.7' }}>
-                {parseInt(viewCount).toLocaleString()} views
-              </Typography>
-              <Typography variant="body1" sx={{ opacity: '0.7' }}>
-                {parseInt(likeCount).toLocaleString()} likes
-              </Typography>
+                <Typography variant="body1" sx={{ opacity: '0.7' }}>
+                  {parseInt(viewCount).toLocaleString()} views
+                </Typography>
+                <Typography variant="body1" sx={{ opacity: '0.7' }}>
+                  {parseInt(likeCount).toLocaleString()} likes
+                </Typography>
+              </Stack>
             </Stack>
-          </Stack>
+          </Box>
         </Box>
 
-        <Box
-          px={2}
-          py={{ md: '1', xs: '5' }}
-          justifyContent={'center'}
-          alignItems={'center'}
-        >
-          <VideosContainer direction="column" />
-        </Box>
+        <VideosContainer direction="column" flex={'flex'} />
       </Stack>
     </main>
   );

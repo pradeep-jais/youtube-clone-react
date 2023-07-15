@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getDataFromAPI } from '../../features/category/categorySlice';
 import { useEffect } from 'react';
 import Error from './Error';
+import { setPage } from '../../features/category/categorySlice';
 
 const Feed = () => {
   const { selectedCategory, isError, errorMessage } = useSelector(
@@ -15,6 +16,9 @@ const Feed = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // set page indicator to Home
+    dispatch(setPage('Home'));
+
     dispatch(getDataFromAPI(`search?part=snippet&q=${selectedCategory}`));
   }, []);
 
@@ -26,7 +30,6 @@ const Feed = () => {
       <Stack
         sx={{
           flexDirection: { xs: 'column', md: 'row' },
-          padding: '0.5rem 0 0 1rem',
         }}
       >
         <Box

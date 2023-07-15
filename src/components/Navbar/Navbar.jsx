@@ -13,6 +13,7 @@ const Navbar = () => {
         direction="row"
         alignItems="center"
         p={2}
+        height="5rem"
         sx={{
           position: 'sticky',
           background: '#000',

@@ -5,10 +5,14 @@ import { Feed, SearchFeed, VideoPlay, ChannelDetail } from './components/pages';
 
 import { Box } from '@mui/material';
 
+import { useSelector } from 'react-redux';
+
 function App() {
+  const { page } = useSelector((store) => store.category);
+
   return (
     <BrowserRouter>
-      <Box sx={{ background: '#000', width: '100%' }}>
+      <Box className={page} sx={{ background: '#000', width: '100%' }}>
         <Navbar />
         <Routes>
           <Route path="/" element={<Feed />} />

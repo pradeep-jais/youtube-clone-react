@@ -31,7 +31,7 @@ const Navbar = () => {
         >
           <YouTubeIcon
             sx={{
-              fontSize: { xs: '2rem', sm: '3rem', md: '3.5rem' },
+              fontSize: { xs: '2.5rem', sm: '3rem', md: '3.5rem' },
               color: 'red',
             }}
           />

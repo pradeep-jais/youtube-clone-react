@@ -70,6 +70,5 @@ const categorySlice = createSlice({
 });
 
 export const { setCategory, setPage } = categorySlice.actions;
-console.log(categorySlice);
 
 export default categorySlice.reducer;

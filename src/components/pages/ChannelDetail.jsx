@@ -33,7 +33,7 @@ const ChannelDetails = () => {
           style={{
             background:
               'radial-gradient(circle, rgba(227,207,52,1) 0%, rgba(56,227,216,1) 54%, rgba(172,55,235,1) 100%)',
-            height: '220px',
+            height: '35vh',
           }}
         />
         <ChannelCard channelDetail={channelData} marginTop="-90px" />

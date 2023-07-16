@@ -35,6 +35,7 @@ const VideoCard = ({ video, flex }) => {
           : {
               boxShadow: 'none',
               borderRadius: 0,
+              background: '#000',
               width: { xs: '100vw', sm: '240px' },
             }
       }
@@ -52,7 +53,6 @@ const VideoCard = ({ video, flex }) => {
 
       <CardContent
         sx={{
-          background: '#000',
           width: { sm: '100%', lg: '240px' },
           maxWidth: '298px',
         }}
